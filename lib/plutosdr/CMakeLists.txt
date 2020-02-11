@@ -29,7 +29,7 @@ target_include_directories(gnuradio-osmosdr PRIVATE
     ${GNURADIO_IIO_INCLUDE_DIRS}
     ${IIO_INCLUDE_DIRS}
     /usr/include/iio
-    ${CMAKE_CURRENT_SOURCE_DIR}/../include
+    ${CMAKE_CURRENT_SOURCE_DIR}/..
 )
 
 target_link_libraries(gnuradio-osmosdr
