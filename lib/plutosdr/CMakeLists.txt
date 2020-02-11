@@ -26,8 +26,10 @@ message(STATUS "GNURADIO_IIO_INCLUDE_DIRS ${GNURADIO_IIO_INCLUDE_DIRS}")
 
 target_include_directories(gnuradio-osmosdr PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${GNURADIO_IIO_INCLUDE_DIRS}/iio
+    ${GNURADIO_IIO_INCLUDE_DIRS}
     ${IIO_INCLUDE_DIRS}
+    /usr/include/iio
+    ${CMAKE_CURRENT_SOURCE_DIR}/../include
 )
 
 target_link_libraries(gnuradio-osmosdr
