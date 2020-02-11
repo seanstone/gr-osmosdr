@@ -1,4 +1,4 @@
-# Copyright 2012 Free Software Foundation, Inc.
+# Copyright 2017 Free Software Foundation, Inc.
 #
 # This file is part of gr-osmosdr
 #
@@ -23,15 +23,15 @@
 
 target_include_directories(gnuradio-osmosdr PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${LIBAIRSPYHF_INCLUDE_DIRS}
 )
 
 target_link_libraries(gnuradio-osmosdr
     ${Gnuradio-blocks_LIBRARIES}
+    ${LIBAIRSPYHF_LIBRARIES}
 )
 
 list(APPEND gr_osmosdr_srcs
-    ${CMAKE_CURRENT_SOURCE_DIR}/redpitaya_source_c.cc
-    ${CMAKE_CURRENT_SOURCE_DIR}/redpitaya_sink_c.cc
-    ${CMAKE_CURRENT_SOURCE_DIR}/redpitaya_common.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/airspyhf_source_c.cc
 )
 set(gr_osmosdr_srcs ${gr_osmosdr_srcs} PARENT_SCOPE)

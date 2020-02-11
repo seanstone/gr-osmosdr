@@ -84,6 +84,10 @@
 #include <airspy_source_c.h>
 #endif
 
+#ifdef ENABLE_AIRSPYHF
+#include <airspyhf_source_c.h>
+#endif
+
 #ifdef ENABLE_SOAPY
 #include <soapy_source_c.h>
 #endif
@@ -164,6 +168,9 @@ source_impl::source_impl( const std::string &args )
 #ifdef ENABLE_AIRSPY
   dev_types.push_back("airspy");
 #endif
+#ifdef ENABLE_AIRSPYHF
+  dev_types.push_back("airspyhf");
+#endif
 #ifdef ENABLE_SOAPY
   dev_types.push_back("soapy");
 #endif
@@ -242,6 +249,10 @@ source_impl::source_impl( const std::string &args )
 #endif
 #ifdef ENABLE_AIRSPY
     BOOST_FOREACH( std::string dev, airspy_source_c::get_devices() )
+      dev_list.push_back( dev );
+#endif
+#ifdef ENABLE_AIRSPYHF
+    BOOST_FOREACH( std::string dev, airspyhf_source_c::get_devices() )
       dev_list.push_back( dev );
 #endif
 #ifdef ENABLE_SOAPY
@@ -373,6 +384,13 @@ source_impl::source_impl( const std::string &args )
     }
 #endif
 
+#ifdef ENABLE_AIRSPYHF
+    if ( dict.count("airspyhf") ) {
+      airspyhf_source_c_sptr src = make_airspyhf_source_c( arg );
+      block = src; iface = src.get();
+    }
+#endif
+
 #ifdef ENABLE_SOAPY
     if ( dict.count("soapy") ) {
       soapy_source_c_sptr src = make_soapy_source_c( arg );
@@ -490,7 +508,7 @@ double source_impl::set_sample_rate(double rate)
     _sample_rate = sample_rate;
   }
 
-  return sample_rate;
+  return _sample_rate;
 }
 
 double source_impl::get_sample_rate()
