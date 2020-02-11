@@ -46,6 +46,8 @@ target_include_directories(gnuradio-osmosdr
     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
     PUBLIC ${Boost_INCLUDE_DIRS}
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
+    PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    PUBLIC $<BUILD_INTERFACE:/usr/include/iio>
     PUBLIC $<INSTALL_INTERFACE:include>
   )
 set_target_properties(gnuradio-osmosdr PROPERTIES DEFINE_SYMBOL "gnuradio_osmosdr_EXPORTS")
