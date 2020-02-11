@@ -172,7 +172,7 @@ endif(ENABLE_UHD)
 ########################################################################
 GR_REGISTER_COMPONENT("IIO Devices" ENABLE_IIO GNURADIO_IIO_FOUND)
 if(ENABLE_IIO)
-GR_INCLUDE_SUBDIRECTORY(plutosdr)
+    add_subdirectory(plutosdr)
 endif(ENABLE_IIO)
 
 ########################################################################

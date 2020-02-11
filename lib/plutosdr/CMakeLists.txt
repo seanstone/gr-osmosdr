@@ -21,13 +21,16 @@
 # This file included, use CMake directory variables
 ########################################################################
 
-include_directories(
+message(STATUS "IIO_INCLUDE_DIRS ${IIO_INCLUDE_DIRS}")
+message(STATUS "GNURADIO_IIO_INCLUDE_DIRS ${GNURADIO_IIO_INCLUDE_DIRS}")
+
+target_include_directories(gnuradio-osmosdr PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${GNURADIO_IIO_INCLUDE_DIRS}
+    ${GNURADIO_IIO_INCLUDE_DIRS}/iio
     ${IIO_INCLUDE_DIRS}
 )
 
-set(iio_srcs
+target_link_libraries(gnuradio-osmosdr
 #    ${CMAKE_CURRENT_SOURCE_DIR}/iio_sink_c.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/plutosdr_source_c.cc
 )

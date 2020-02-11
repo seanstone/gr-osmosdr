@@ -178,6 +178,8 @@ find_package(LibAIRSPYHF)
 find_package(LibbladeRF)
 find_package(SoapySDR NO_MODULE)
 find_package(LibFreeSRP)
+find_package(IIO)
+find_package(GnuradioIIO)
 find_package(Doxygen)
 
     # Python
